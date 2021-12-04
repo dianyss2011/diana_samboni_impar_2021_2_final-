@@ -1,0 +1,111 @@
+Starting a Gradle Daemon, 1 incompatible Daemon could not be reused, use --status for details
+
+> Task :app:signingReport
+Variant: debug
+Config: debug
+Store: C:\Users\diany\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:89:ED:8D:4A:84:BF:C3:2E:A6:D5:16:65:F0:C0:61
+SHA1: 60:09:3A:75:77:3D:55:CB:99:F1:98:A2:E1:29:9B:41:D7:D9:5B:A2
+SHA-256: DF:D0:7C:BE:03:DA:9A:2C:33:26:37:13:45:A5:19:A6:47:71:A2:A1:25:45:C7:4D:77:CF:89:97:E6:E9:A9:C2
+Valid until: domingo 26 de noviembre de 2051
+----------
+Variant: release
+Config: debug
+Store: C:\Users\diany\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:89:ED:8D:4A:84:BF:C3:2E:A6:D5:16:65:F0:C0:61
+SHA1: 60:09:3A:75:77:3D:55:CB:99:F1:98:A2:E1:29:9B:41:D7:D9:5B:A2
+SHA-256: DF:D0:7C:BE:03:DA:9A:2C:33:26:37:13:45:A5:19:A6:47:71:A2:A1:25:45:C7:4D:77:CF:89:97:E6:E9:A9:C2
+Valid until: domingo 26 de noviembre de 2051
+----------
+Variant: profile
+Config: debug
+Store: C:\Users\diany\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:89:ED:8D:4A:84:BF:C3:2E:A6:D5:16:65:F0:C0:61
+SHA1: 60:09:3A:75:77:3D:55:CB:99:F1:98:A2:E1:29:9B:41:D7:D9:5B:A2
+SHA-256: DF:D0:7C:BE:03:DA:9A:2C:33:26:37:13:45:A5:19:A6:47:71:A2:A1:25:45:C7:4D:77:CF:89:97:E6:E9:A9:C2
+Valid until: domingo 26 de noviembre de 2051
+----------
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\diany\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:89:ED:8D:4A:84:BF:C3:2E:A6:D5:16:65:F0:C0:61
+SHA1: 60:09:3A:75:77:3D:55:CB:99:F1:98:A2:E1:29:9B:41:D7:D9:5B:A2
+SHA-256: DF:D0:7C:BE:03:DA:9A:2C:33:26:37:13:45:A5:19:A6:47:71:A2:A1:25:45:C7:4D:77:CF:89:97:E6:E9:A9:C2
+Valid until: domingo 26 de noviembre de 2051
+----------
+Variant: debugUnitTest
+Config: debug
+Store: C:\Users\diany\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:89:ED:8D:4A:84:BF:C3:2E:A6:D5:16:65:F0:C0:61
+SHA1: 60:09:3A:75:77:3D:55:CB:99:F1:98:A2:E1:29:9B:41:D7:D9:5B:A2
+SHA-256: DF:D0:7C:BE:03:DA:9A:2C:33:26:37:13:45:A5:19:A6:47:71:A2:A1:25:45:C7:4D:77:CF:89:97:E6:E9:A9:C2
+Valid until: domingo 26 de noviembre de 2051
+----------
+Variant: releaseUnitTest
+Config: debug
+Store: C:\Users\diany\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:89:ED:8D:4A:84:BF:C3:2E:A6:D5:16:65:F0:C0:61
+SHA1: 60:09:3A:75:77:3D:55:CB:99:F1:98:A2:E1:29:9B:41:D7:D9:5B:A2
+SHA-256: DF:D0:7C:BE:03:DA:9A:2C:33:26:37:13:45:A5:19:A6:47:71:A2:A1:25:45:C7:4D:77:CF:89:97:E6:E9:A9:C2
+Valid until: domingo 26 de noviembre de 2051
+----------
+Variant: profileUnitTest
+Config: debug
+Store: C:\Users\diany\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:89:ED:8D:4A:84:BF:C3:2E:A6:D5:16:65:F0:C0:61
+SHA1: 60:09:3A:75:77:3D:55:CB:99:F1:98:A2:E1:29:9B:41:D7:D9:5B:A2
+SHA-256: DF:D0:7C:BE:03:DA:9A:2C:33:26:37:13:45:A5:19:A6:47:71:A2:A1:25:45:C7:4D:77:CF:89:97:E6:E9:A9:C2
+Valid until: domingo 26 de noviembre de 2051
+----------
+
+> Task :google_sign_in:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\diany\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:89:ED:8D:4A:84:BF:C3:2E:A6:D5:16:65:F0:C0:61
+SHA1: 60:09:3A:75:77:3D:55:CB:99:F1:98:A2:E1:29:9B:41:D7:D9:5B:A2
+SHA-256: DF:D0:7C:BE:03:DA:9A:2C:33:26:37:13:45:A5:19:A6:47:71:A2:A1:25:45:C7:4D:77:CF:89:97:E6:E9:A9:C2
+Valid until: domingo 26 de noviembre de 2051
+----------
+Variant: debugUnitTest
+Config: debug
+Store: C:\Users\diany\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:89:ED:8D:4A:84:BF:C3:2E:A6:D5:16:65:F0:C0:61
+SHA1: 60:09:3A:75:77:3D:55:CB:99:F1:98:A2:E1:29:9B:41:D7:D9:5B:A2
+SHA-256: DF:D0:7C:BE:03:DA:9A:2C:33:26:37:13:45:A5:19:A6:47:71:A2:A1:25:45:C7:4D:77:CF:89:97:E6:E9:A9:C2
+Valid until: domingo 26 de noviembre de 2051
+----------
+Variant: releaseUnitTest
+Config: debug
+Store: C:\Users\diany\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:89:ED:8D:4A:84:BF:C3:2E:A6:D5:16:65:F0:C0:61
+SHA1: 60:09:3A:75:77:3D:55:CB:99:F1:98:A2:E1:29:9B:41:D7:D9:5B:A2
+SHA-256: DF:D0:7C:BE:03:DA:9A:2C:33:26:37:13:45:A5:19:A6:47:71:A2:A1:25:45:C7:4D:77:CF:89:97:E6:E9:A9:C2
+Valid until: domingo 26 de noviembre de 2051
+----------
+Variant: profileUnitTest
+Config: debug
+Store: C:\Users\diany\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:89:ED:8D:4A:84:BF:C3:2E:A6:D5:16:65:F0:C0:61
+SHA1: 60:09:3A:75:77:3D:55:CB:99:F1:98:A2:E1:29:9B:41:D7:D9:5B:A2
+SHA-256: DF:D0:7C:BE:03:DA:9A:2C:33:26:37:13:45:A5:19:A6:47:71:A2:A1:25:45:C7:4D:77:CF:89:97:E6:E9:A9:C2
+Valid until: domingo 26 de noviembre de 2051
+----------
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.7/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 17s
+2 actionable tasks: 2 executed

@@ -69,14 +69,6 @@ class _LoginScreenState extends State<LoginScreen> {
     await googleSignIn.signOut();
     var user = await googleSignIn.signIn();
 
-    Map<String, dynamic> request = {
-      'email': user?.email,
-      'id': user?.id,
-      'loginType': 1,
-      'fullname': user?.displayName,
-      'photoURL': user?.photoUrl,
-    };
-
     if (user == null) {
  
       await showAlertDialog(
@@ -88,6 +80,38 @@ class _LoginScreenState extends State<LoginScreen> {
         ]
       );    
       return;
+    }
+
+    Map<String, dynamic> request = {
+      'email': user?.email,
+      'id': user?.id,
+      'loginType': 1,
+      'fullname': user?.displayName,
+      'photoURL': user?.photoUrl,
+      "firstName": user?.displayName,
+      "lastName": user?.displayName
+    };;
+
+    if (user?.displayName != null) {
+
+      String displayName = user.displayName!;
+      int pos = displayName.indexOf(' ');
+      if (pos != -1)
+      {
+
+          String firstName = displayName.substring(0, pos);
+          String lastName = displayName.substring(pos + 1, displayName.length );
+
+          request = {
+            'email': user?.email,
+            'id': user?.id,
+            'loginType': 1,
+            'fullname': user?.displayName,
+            'photoURL': user?.photoUrl,
+            "firstName": firstName,
+            "lastName": lastName
+          };
+      }
     }
 
     await _socialLogin(request);

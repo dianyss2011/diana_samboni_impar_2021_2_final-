@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "593703233679",
+    "project_id": "examenfinal-cfae6",
+    "storage_bucket": "examenfinal-cfae6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593703233679:android:51383bb98ad28f7defa8fa",
+        "android_client_info": {
+          "package_name": "com.dianasoft.examenfinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593703233679-p96bqrkeh10115h248mui29su2a9eui0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dianasoft.examenfinal",
+            "certificate_hash": "60093a75773d55cb99f198a2e1299b41d7d95ba2"
+          }
+        },
+        {
+          "client_id": "593703233679-lbu2ed350p3h4g2kk2rtj09ejjfar1j2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzOyif2FZLiLFN1rPNxJMZpcb8HwGO-To"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593703233679-lbu2ed350p3h4g2kk2rtj09ejjfar1j2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
