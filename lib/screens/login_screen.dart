@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:examenfinal/models/document_type.dart';
+import 'package:examenfinal/models/user.dart';
 import 'package:examenfinal/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
@@ -145,13 +147,31 @@ class _LoginScreenState extends State<LoginScreen> {
 
     var body = response.body;
 
+    var user = User(
+      firstName: '',
+      lastName: '',
+      documentType: DocumentType(id: 0, description: ''),
+      document: '',
+      address: '',
+      imageId: '',
+      imageFullPath: '',
+      userType: 1,
+      loginType: 1,
+      fullName: '', 
+      id: '', 
+      userName: '', 
+      email: '', 
+      countryCode: '', 
+      phoneNumber: ''
+    );
+
 
     var decodedJson = jsonDecode(body);
     var token = Token.fromJson(decodedJson);
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => FormScreen(token: token)
+        builder: (context) => FormScreen(token: token, user: user,)
       )
     );
   }
