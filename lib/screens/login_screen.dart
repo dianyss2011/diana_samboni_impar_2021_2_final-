@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:examenfinal/helpers/api_helper.dart';
 import 'package:examenfinal/models/document_type.dart';
+import 'package:examenfinal/models/response.dart';
 import 'package:examenfinal/models/user.dart';
 import 'package:examenfinal/screens/form_screen.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(height: 40,),
-                _showGoogleLoginButton(),
+                _showGooggleLogin(),
               ],
             ),
           ),
@@ -44,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 
-  Widget _showGoogleLoginButton() {
+  Widget _showGooggleLogin() {
     return Row(
       children: <Widget>[
         Expanded(
@@ -146,32 +148,16 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     var body = response.body;
-
-    var user = User(
-      firstName: '',
-      lastName: '',
-      documentType: DocumentType(id: 0, description: ''),
-      document: '',
-      address: '',
-      imageId: '',
-      imageFullPath: '',
-      userType: 1,
-      loginType: 1,
-      fullName: '', 
-      id: '', 
-      userName: '', 
-      email: '', 
-      countryCode: '', 
-      phoneNumber: ''
-    );
-
-
     var decodedJson = jsonDecode(body);
     var token = Token.fromJson(decodedJson);
+
+    Response remarks = await ApiHelper.getResponse(token);
+
+
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => FormScreen(token: token, user: user,)
+        builder: (context) => FormScreen(token: token, finals: remarks.result)
       )
     );
   }

@@ -1,13 +1,17 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:examenfinal/helpers/api_helper.dart';
+import 'package:examenfinal/models/finals.dart';
+import 'package:examenfinal/models/response.dart';
 import 'package:examenfinal/models/token.dart';
-import 'package:examenfinal/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class FormScreen extends StatefulWidget {
   final Token token;
-  final User user;
+  final Finals finals;
   
-  FormScreen({required this.token, required this.user});
+  FormScreen({required this.token, required this.finals});
 
   @override
   _FormScreenState createState() => _FormScreenState();
@@ -19,6 +23,11 @@ class _FormScreenState extends State<FormScreen> {
   String _emailError = '';
   bool _emailShowError = false;
   TextEditingController _emailController = TextEditingController();
+
+  int _rating = 0;
+  String _ratingError = '';
+  bool _ratingShowError = false;
+  TextEditingController _ratingController = TextEditingController();
 
   String _likeComentaries = '';
   String _likeComentariesError = '';
@@ -35,16 +44,31 @@ class _FormScreenState extends State<FormScreen> {
   bool _remarksShowError = false;
   TextEditingController _remarksController = TextEditingController();
 
+  @override
+  void initState() {
+    super.initState();
+    _email = widget.finals.email;
+    _emailController.text = _email;
+
+    _rating = widget.finals.qualification;
+    _ratingController.text = _rating.toString();
+    
+    _likeComentaries = widget.finals.theBest;
+    _likeComentariesController.text = _likeComentaries;
+    
+    _dislikeComentaries = widget.finals.theWorst;
+    _dislikeComentariesController.text = _dislikeComentaries;
+    
+    _remarks = widget.finals.remarks;
+    _remarksController.text = _remarks;
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          widget.user.id.isEmpty
-            ? 'Formulario' 
-            : widget.user.fullName
-        ),
+        title: Text('Formulario'),
       ),
       body: Stack(
         children: [
@@ -93,7 +117,6 @@ class _FormScreenState extends State<FormScreen> {
     return Container(
       padding: EdgeInsets.all(10),
       child: TextField(
-        enabled: widget.user.id.isEmpty,
         controller: _emailController,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
@@ -125,7 +148,8 @@ class _FormScreenState extends State<FormScreen> {
         color: Colors.amber,
       ),
       onRatingUpdate: (rating) {
-        print(rating);
+        _rating = rating.toInt();
+        print(_rating);
       },
     );
   }
@@ -136,7 +160,7 @@ class _FormScreenState extends State<FormScreen> {
       child: TextField(
         keyboardType: TextInputType.multiline,
         minLines: 1,
-        maxLength: 4,
+        maxLength: 100,
         controller: _likeComentariesController,
         decoration: InputDecoration(
           hintText: 'Lo que más te gustó del curso...',
@@ -160,7 +184,7 @@ class _FormScreenState extends State<FormScreen> {
       child: TextField(
         keyboardType: TextInputType.multiline,
         minLines: 1,
-        maxLength: 4,
+        maxLength: 100,
         controller: _dislikeComentariesController,
         decoration: InputDecoration(
           hintText: 'Lo que menos te gustó del curso...',
@@ -184,7 +208,7 @@ class _FormScreenState extends State<FormScreen> {
       child: TextField(
         keyboardType: TextInputType.multiline,
         minLines: 1,
-        maxLength: 4,
+        maxLength: 100,
         controller: _remarksController,
         decoration: InputDecoration(
           hintText: 'Ingresa un comentario general...',
@@ -202,5 +226,94 @@ class _FormScreenState extends State<FormScreen> {
     );
   }
 
-  _save() {}
+  void _save() {
+    if (!_validateFields()) {
+      return;
+    }
+
+    _saveRecord();
+  }
+
+  bool _validateFields() {
+    bool isValid = true;
+
+    if (_email.isEmpty) {
+      isValid = false;
+      _emailShowError = true;
+      _emailError = 'Debes ingresar un email.';
+    } else if (!EmailValidator.validate(_email)) {
+      isValid = false;
+      _emailShowError = true;
+      _emailError = 'Debes ingresar un email válido.';
+    } else if (!_email.toLowerCase().contains('correo.itm.edu.co')) {
+      isValid = false;
+      _emailShowError = true;
+      _emailError = 'Debes ingresar un email del dominio del ITM.';
+    } else {
+      _emailShowError = false;
+    }
+
+    if (_rating == 0) {
+      isValid = false;
+      _ratingShowError = true;
+      _ratingError = 'Debes seleccionar una puntuación.';
+    } else {
+      _ratingShowError = false;
+    }
+    
+    if (_likeComentaries.isEmpty) {
+      isValid = true;
+      _likeComentariesShowError = true;
+      _likeComentariesError = 'Debes ingresar lo que más te gustó del curso.';
+    } else {
+      _likeComentariesShowError = false;
+    }
+    
+    if (_dislikeComentaries.isEmpty) {
+      isValid = true;
+      _dislikeComentariesShowError = true;
+      _dislikeComentariesError = 'Debes ingresar lo que menos te gustó del curso.';
+    } else {
+      _dislikeComentariesShowError = false;
+    }
+    
+    if (_remarks.isEmpty) {
+      isValid = true;
+      _remarksShowError = true;
+      _remarksError = 'Debes ingresar un comentario general.';
+    } else {
+      _remarksShowError = false;
+    }
+
+    setState(() { });
+    return isValid;
+  }
+
+  void _saveRecord() async {
+
+    Map<String, dynamic> request = {
+      'email': _email,
+      'qualification': _rating,
+      'theBest': _likeComentaries,
+      'theWorst': _dislikeComentaries,
+      'remarks': _remarks
+    };
+
+    Response response = await ApiHelper.post(
+      request,
+      widget.token
+    );
+
+    if (!response.isSuccess) {
+      await showAlertDialog(
+        context: context,
+        title: 'Error',
+        message: response.message,
+        actions: <AlertDialogAction>[
+          AlertDialogAction(key: null, label: 'Aceptar')
+        ]
+      );
+      return;
+    }
+  }
 }
